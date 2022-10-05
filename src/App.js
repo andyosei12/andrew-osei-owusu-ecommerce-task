@@ -1,11 +1,14 @@
+import { Component } from "react";
 import "./App.css";
 
-function App() {
-  return (
-    <div>
-      <h1>Creating something awesome</h1>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return <h1>Creating something awesome</h1>;
+  }
 }
 
 export default App;
