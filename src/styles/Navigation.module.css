@@ -1,0 +1,11 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 5rem;
+}
+
+.app-icon {
+  width: 1rem;
+  height: 1rem;
+}
