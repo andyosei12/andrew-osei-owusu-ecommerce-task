@@ -1,5 +1,6 @@
 import { Component } from "react";
-import "./App.css";
+import "./styles/App.css";
+import Navigation from "./routes/Navigation";
 
 class App extends Component {
   constructor() {
@@ -7,7 +8,11 @@ class App extends Component {
   }
 
   render() {
-    return <h1>Creating something awesome</h1>;
+    return (
+      <div className="wrapper">
+        <Navigation />;
+      </div>
+    );
   }
 }
 

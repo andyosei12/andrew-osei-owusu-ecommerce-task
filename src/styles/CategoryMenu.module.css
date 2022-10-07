@@ -1,0 +1,12 @@
+.nav-wrapper {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-wrapper li {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+}
