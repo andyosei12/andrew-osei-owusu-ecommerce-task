@@ -1,6 +1,8 @@
 import { Component } from "react";
-import "./styles/App.css";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navigation from "./routes/Navigation";
+import Category from "./routes/Category";
+import "./styles/App.css";
 
 class App extends Component {
   constructor() {
@@ -10,7 +12,18 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Navigation />;
+        <Routes>
+          <Route path="/" element={<Navigation />}>
+            <Route
+              index
+              path="/category/:categoryName"
+              element={<Category />}
+            />
+
+            {/* Redirecting the home page to a category page */}
+            <Route path="/" element={<Navigate to="/category/all" replace />} />
+          </Route>
+        </Routes>
       </div>
     );
   }
