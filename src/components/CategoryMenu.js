@@ -4,8 +4,8 @@ import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import styles from "../styles/CategoryMenu.module.css";
 
-const GetCategories = gql`
-  {
+const GET_ALL_CATEGORIES = gql`
+  query GetCategories {
     categories {
       name
     }
@@ -20,7 +20,7 @@ class CategoryMenu extends Component {
     return (
       <nav>
         <ul className={styles["nav-wrapper"]}>
-          <Query query={GetCategories}>
+          <Query query={GET_ALL_CATEGORIES}>
             {({ data }) => {
               return data?.categories.map((category) => (
                 <li key={category.name}>
