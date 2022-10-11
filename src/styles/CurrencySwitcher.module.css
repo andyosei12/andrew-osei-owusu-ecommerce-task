@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+}
+
+.container h2 {
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+.currency-switch__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.currency-dropdown {
+  position: absolute;
+  top: 3rem;
+  left: -1.7rem;
+  background: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.currency-dropdown ul {
+  width: 10rem;
+}
+
+.currency-dropdown__list {
+  list-style: none;
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.currency-dropdown__list:hover {
+  background: var(--color-gray);
+}
+
+.currency-dropdown__list button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
