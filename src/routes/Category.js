@@ -18,6 +18,7 @@ const GET_CATEGORY_PRODUCTS = gql`
             symbol
           }
         }
+        inStock
       }
     }
   }
