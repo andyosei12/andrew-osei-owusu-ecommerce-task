@@ -2,8 +2,13 @@
   padding: 1.5rem;
   transition: all 0.5s ease-out;
 }
+
 .container:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.container[data-product__active="true"]:hover .product__cart-icon {
+  display: block;
 }
 
 .img-container {
@@ -21,7 +26,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.25;
+  opacity: 0.23;
 }
 
 .img-container h3 {
@@ -41,4 +46,23 @@ img {
 .product--name {
   font-weight: 300;
   margin-bottom: 0.3rem;
+}
+
+.product__cart-icon {
+  position: absolute;
+  bottom: -1.65rem;
+  right: 1.3rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background: var(--color-primary);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  cursor: pointer;
+}
+
+.product__cart-icon svg path {
+  fill: white;
 }
