@@ -5,6 +5,7 @@
   --color-primary: #5ece7b;
   --color-dark-1: #1d1f22;
   --color-white: #fff;
+  --color-gray: #eee;
 }
 
 *,
@@ -27,6 +28,10 @@ body {
 /* utility classes */
 .flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
 }
 
 /* margins */
