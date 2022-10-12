@@ -25,6 +25,11 @@ body {
   color: var(--color-dark-1);
 }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
 /* utility classes */
 .flex {
   display: flex;

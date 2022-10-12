@@ -8,18 +8,4 @@ const client = new ApolloClient({
   cache,
 });
 
-// const query = gql`
-//   {
-//     categories {
-//       name
-//       products {
-//         id
-//         name
-//       }
-//     }
-//   }
-// `;
-
-// client.query({ query }).then((result) => console.log(result));
-
 export default client;
