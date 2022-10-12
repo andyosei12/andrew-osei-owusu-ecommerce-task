@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Navigation from "./routes/Navigation";
 import Category from "./routes/Category";
 import "./styles/App.css";
+import ProductDetails from "./routes/ProductDetails";
 
 class App extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class App extends Component {
 
             {/* Redirecting the home page to a category page */}
             <Route path="/" element={<Navigate to="/category/all" replace />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
           </Route>
         </Routes>
       </div>
