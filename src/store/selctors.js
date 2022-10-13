@@ -9,8 +9,3 @@ export const selectCurrencySymbol = createSelector(
   [selectCurrency],
   (currency) => currency.symbol
 );
-
-export const selectCurrencies = createSelector(
-  [selectCurrency],
-  (currency) => currency.currencies
-);

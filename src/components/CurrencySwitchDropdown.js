@@ -1,13 +1,25 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import { changeCurrencyFormat } from "../store/currency-slice";
-import { selectCurrencies } from "../store/selctors";
+import client from "../client";
 import styles from "../styles/CurrencySwitcher.module.css";
+import { GET_CURRENCIES } from "../routes/Navigation";
 
 class CurrencySwitchDropdown extends Component {
   constructor() {
     super();
+    this.state = {
+      currencies: null,
+    };
+  }
+
+  componentDidMount() {
+    const { currencies } = client.readQuery({
+      query: GET_CURRENCIES,
+    });
+    this.setState({
+      currencies,
+    });
   }
 
   changeCurrencyFormat = (currency) => {
@@ -16,14 +28,12 @@ class CurrencySwitchDropdown extends Component {
   };
 
   render() {
-    const {
-      currencies: { currencies },
-    } = this.props;
+    const { currencies } = this.state;
 
     return (
       <div className={styles["currency-dropdown"]}>
         <ul>
-          {currencies.map((currency) => (
+          {currencies?.map((currency) => (
             <li
               key={currency.symbol}
               className={styles["currency-dropdown__list"]}
@@ -41,17 +51,10 @@ class CurrencySwitchDropdown extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  currencies: selectCurrencies,
-});
-
 const mapDispatchToProps = (dispatch) => ({
   changeCurrency(currency) {
     dispatch(changeCurrencyFormat(currency));
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CurrencySwitchDropdown);
+export default connect(null, mapDispatchToProps)(CurrencySwitchDropdown);
