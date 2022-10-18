@@ -5,6 +5,7 @@ import { selectCurrencySymbol } from "../store/selctors";
 import { ReactComponent as CartIcon } from "../assets/carticon.svg";
 import styles from "../styles/ProductCard.module.css";
 import { Link } from "react-router-dom";
+import { addToCart } from "../store/cart-slice";
 
 class ProductCard extends Component {
   constructor() {
@@ -12,7 +13,21 @@ class ProductCard extends Component {
   }
 
   addProductToCartHandler = () => {
-    console.log("will add product to cart");
+    const { product, addItemToCart } = this.props;
+    // console.log(product);
+    const selectedAttributes = {};
+    if (product.attributes.length > 0) {
+      product.attributes.forEach((element) => {
+        selectedAttributes[element.name] = element.items[0];
+      });
+    }
+    const item = {
+      productInfo: product,
+      selectedAttributes,
+    };
+    console.log(item);
+
+    addItemToCart(item);
   };
 
   render() {
@@ -23,29 +38,29 @@ class ProductCard extends Component {
     const { amount } = price[0];
 
     return (
-      <Link to={`/product/${product.id}`}>
-        <div
-          className={styles.container}
-          data-product__active={product.inStock}
-          style={{ opacity: `${!product.inStock ? 0.35 : 1}` }}
-        >
-          <div className={styles["img-container"]}>
-            <div className={styles["img-container--box"]} />
-            <img src={product.gallery[0]} alt={product.name} />
-            {!product.inStock && <h3>Out of stock</h3>}
-            <button
-              className={styles["product__cart-icon"]}
-              onClick={this.addProductToCartHandler}
-            >
-              <CartIcon />
-            </button>
-          </div>
+      <div
+        className={styles.container}
+        data-product__active={product.inStock}
+        style={{ opacity: `${!product.inStock ? 0.35 : 1}` }}
+      >
+        <div className={styles["img-container"]}>
+          <div className={styles["img-container--box"]} />
+          <img src={product.gallery[0]} alt={product.name} />
+          {!product.inStock && <h3>Out of stock</h3>}
+          <button
+            className={styles["product__cart-icon"]}
+            onClick={this.addProductToCartHandler}
+          >
+            <CartIcon />
+          </button>
+        </div>
+        <Link to={`/product/${product.id}`}>
           <div className="mt-2">
             <h1 className={styles["product--name"]}>{product.name}</h1>
             <h1>{`${currencySymbol + amount}`}</h1>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     );
   }
 }
@@ -54,4 +69,10 @@ export const mapStateToProps = createStructuredSelector({
   currencySymbol: selectCurrencySymbol,
 });
 
-export default connect(mapStateToProps)(ProductCard);
+export const mapDispatchToProps = (dispatch) => ({
+  addItemToCart(item) {
+    dispatch(addToCart(item));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
