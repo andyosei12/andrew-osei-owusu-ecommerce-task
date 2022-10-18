@@ -9,7 +9,6 @@ const cartSlice = createSlice({
   initialState: initialCartState,
   reducers: {
     addToCart(state, action) {
-      console.log(action.payload);
       state.cartItems = [...state.cartItems, action.payload];
     },
   },

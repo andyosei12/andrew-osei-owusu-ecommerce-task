@@ -14,7 +14,6 @@ class ProductCard extends Component {
 
   addProductToCartHandler = () => {
     const { product, addItemToCart } = this.props;
-    // console.log(product);
     const selectedAttributes = {};
     if (product.attributes.length > 0) {
       product.attributes.forEach((element) => {
@@ -25,7 +24,6 @@ class ProductCard extends Component {
       productInfo: product,
       selectedAttributes,
     };
-    console.log(item);
 
     addItemToCart(item);
   };

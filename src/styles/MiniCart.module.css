@@ -1,0 +1,20 @@
+.cartOverlay {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-gray-2);
+  opacity: 0.22;
+  z-index: 500;
+}
+
+.miniCartContainer {
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+  background: var(--color-white);
+  width: 28rem;
+  padding: 1.5rem 1rem;
+  z-index: 10000;
+}
