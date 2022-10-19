@@ -6,19 +6,19 @@ class SwatchAttributes extends Component {
     super();
   }
   render() {
-    const { name, items } = this.props;
+    const { value, height, width } = this.props;
+
     return (
       <>
-        <h1 className={styles["product--atribute-name"]}>{name}:</h1>
-        <div className={styles.container}>
-          {items.map((item) => (
-            <button
-              key={item.value}
-              style={{ background: `${item.value}` }}
-              className={styles["product--attribute"]}
-            />
-          ))}
-        </div>
+        <button
+          key={value}
+          className={styles["swatch--attribute"]}
+          style={{
+            background: `${value}`,
+            height: `${height}`,
+            width: `${width}`,
+          }}
+        />
       </>
     );
   }

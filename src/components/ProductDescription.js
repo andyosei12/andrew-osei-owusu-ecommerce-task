@@ -2,11 +2,11 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
-import ProductAttributes from "./ProductAttributes";
 import parse from "html-react-parser";
 
 import styles from "../styles/ProductDetails.module.css";
 import PrimaryButton from "./PrimaryButton";
+import ProductDescriptionAttributes from "./ProductDescriptionAttributes";
 
 class ProductDescription extends Component {
   constructor() {
@@ -24,7 +24,10 @@ class ProductDescription extends Component {
             <h1 className={styles["product--brand"]}>{brand}</h1>
             <h1 className={styles["product--name"]}>{name}</h1>
           </hgroup>
-          <ProductAttributes attributes={attributes} />
+          {/* Attributes */}
+          <div className="mt-2">
+            <ProductDescriptionAttributes attributes={attributes} />
+          </div>
           <div className="mt-2">
             <h1 className={styles["price__heading"]}>Price:</h1>
             <h1

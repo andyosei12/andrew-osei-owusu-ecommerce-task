@@ -19,11 +19,13 @@ class MiniCart extends Component {
       <>
         <div className={styles.cartOverlay} onClick={toggleCartOpen} />
         <div className={styles.miniCartContainer}>
-          <h3>My Bag: 3 Items</h3>
-          <div>
-            {cartItems.map((cartItem) => (
-              <CartItem key={cartItem.productInfo.id} cartItem={cartItem} />
-            ))}
+          <div className={styles.cartItemContainer}>
+            <h3>My Bag: 3 Items</h3>
+            <div>
+              {cartItems.map((cartItem) => (
+                <CartItem key={cartItem.productInfo.id} cartItem={cartItem} />
+              ))}
+            </div>
           </div>
           <div>
             <h3>Total</h3>

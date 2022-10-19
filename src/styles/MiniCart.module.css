@@ -18,3 +18,8 @@
   padding: 1.5rem 1rem;
   z-index: 10000;
 }
+
+.cartItemContainer {
+  height: 40rem;
+  overflow-y: scroll;
+}

@@ -4,11 +4,12 @@
   margin-bottom: 1.5rem;
 }
 
-.product--attribute {
+.text--attribute {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  color: inherit;
   background: transparent;
   font-family: var(--font-tertiary);
   font-weight: 600;

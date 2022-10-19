@@ -2,3 +2,31 @@
   display: flex;
   padding: 1rem 0;
 }
+
+.cartItemInfo {
+  margin-right: auto;
+}
+
+.cartItemQty {
+  margin-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cartItemQty button {
+  background: transparent;
+  border: 2px solid var(--color-gray);
+  font-size: 2rem;
+  padding: 0.05rem;
+}
+
+.cartItemImg {
+  width: 8rem;
+  height: 10rem;
+}
+
+.cartItemImg img {
+  width: 100%;
+  height: 100%;
+}

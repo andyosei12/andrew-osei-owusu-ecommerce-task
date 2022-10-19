@@ -7,20 +7,9 @@ class TextAttributes extends Component {
   }
 
   render() {
-    const { items, name } = this.props;
-    return (
-      <>
-        <h1 className={styles["product--atribute-name"]}>{name}:</h1>
-        <div className={styles.container}>
-          {items.map((item) => (
-            <button key={item.value} className={styles["product--attribute"]}>
-              {item.value}
-            </button>
-          ))}
-        </div>
-      </>
-    );
+    const { value } = this.props;
+
+    return <button className={styles["text--attribute"]}>{value}</button>;
   }
 }
-
 export default TextAttributes;
