@@ -6,6 +6,7 @@
   --color-dark-1: #1d1f22;
   --color-white: #fff;
   --color-gray: #eee;
+  --color-gray-2: #393748;
 }
 
 *,
@@ -23,11 +24,19 @@ html {
 body {
   font-family: var(--font-primary);
   color: var(--color-dark-1);
+  position: relative;
+  min-height: 100vh;
 }
 
 a {
   color: currentColor;
   text-decoration: none;
+}
+
+.btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* utility classes */
@@ -57,8 +66,21 @@ a {
 }
 
 /* font size */
+.text-sm {
+  font-size: 1.5rem;
+}
+.text-md {
+  font-size: 2rem;
+}
 .text-lg {
   font-size: 2.5rem;
+}
+
+.text-300 {
+  font-weight: 300;
+}
+.text-500 {
+  font-weight: 500;
 }
 
 .text-capitalize {

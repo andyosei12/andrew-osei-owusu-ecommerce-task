@@ -1,0 +1,28 @@
+.productAttributesContainer button {
+  padding: 0.4rem;
+}
+
+.productAttributesContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.productAttributeName {
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.textAttribute[data-attribute="true"] {
+  background: var(--color-dark-1);
+  color: var(--color-white);
+}
+
+.swatchAttribute[data-attribute="true"] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  margin-left: 0.3rem;
+}

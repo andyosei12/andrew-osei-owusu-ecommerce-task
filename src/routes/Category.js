@@ -11,7 +11,16 @@ const GET_CATEGORY_PRODUCTS = gql`
       products {
         id
         name
+        brand
         gallery
+        attributes {
+          items {
+            displayValue
+            value
+          }
+          type
+          name
+        }
         prices {
           amount
           currency {

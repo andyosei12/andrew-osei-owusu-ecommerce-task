@@ -10,7 +10,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
 import { connect } from "react-redux";
 
-const GET_PRODUCT_DETAILS = gql`
+export const GET_PRODUCT_DETAILS = gql`
   query GetProductDetailById($productId: String!) {
     product(id: $productId) {
       id
