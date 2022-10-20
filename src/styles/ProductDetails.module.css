@@ -95,3 +95,14 @@ hgroup {
   font-weight: 700;
   font-size: 1.35rem;
 }
+
+.textAttribute[data-attribute="true"] {
+  background: var(--color-dark-1);
+  color: var(--color-white);
+}
+
+.swatchAttribute[data-attribute="true"] {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  margin-left: 0.3rem;
+}

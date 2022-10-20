@@ -7,9 +7,13 @@ class TextAttributes extends Component {
   }
 
   render() {
-    const { value } = this.props;
+    const { value, ...otherProps } = this.props;
 
-    return <button className={styles["text--attribute"]}>{value}</button>;
+    return (
+      <button className={styles["text--attribute"]} {...otherProps}>
+        {value}
+      </button>
+    );
   }
 }
 export default TextAttributes;

@@ -24,7 +24,7 @@ class CartProductAttributes extends Component {
                       key={attribute.value}
                       className={styles.textAttribute}
                       data-attribute={
-                        attribute.value === selectedAttributes[attr.name].value
+                        attribute.value === selectedAttributes[attr.name]
                       }
                     >
                       {" "}
@@ -36,7 +36,7 @@ class CartProductAttributes extends Component {
                       key={attribute.value}
                       className={styles.swatchAttribute}
                       data-attribute={
-                        attribute.value === selectedAttributes[attr.name].value
+                        attribute.value === selectedAttributes[attr.name]
                       }
                     >
                       {" "}
