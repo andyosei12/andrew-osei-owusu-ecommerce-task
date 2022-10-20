@@ -8,8 +8,12 @@ class PrimaryButton extends Component {
   }
 
   render() {
-    const { children } = this.props;
-    return <button className={styles.button}>{children}</button>;
+    const { children, ...otherProps } = this.props;
+    return (
+      <button className={styles.button} {...otherProps}>
+        {children}
+      </button>
+    );
   }
 }
 

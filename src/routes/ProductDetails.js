@@ -52,24 +52,14 @@ class ProductDetails extends Component {
           {({ data }) => {
             if (data) {
               const {
-                product: {
-                  gallery,
-                  name,
-                  brand,
-                  attributes,
-                  prices,
-                  description,
-                },
+                product: { gallery, name, prices },
               } = data;
 
               return (
                 <>
                   <ProductDetailImages images={gallery} name={name} />
                   <ProductDescription
-                    name={name}
-                    brand={brand}
-                    attributes={attributes}
-                    description={description}
+                    productInfo={data.product}
                     price={prices.filter(
                       (price) => price.currency.symbol === currency
                     )}

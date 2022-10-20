@@ -17,7 +17,7 @@ class ProductCard extends Component {
     const selectedAttributes = {};
     if (product.attributes.length > 0) {
       product.attributes.forEach((element) => {
-        selectedAttributes[element.name] = element.items[0];
+        selectedAttributes[element.name] = element.items[0].value;
       });
     }
     const item = {

@@ -8,8 +8,12 @@ class ProductDescriptionAttributes extends Component {
     super();
   }
 
+  changeSelectedAttributeHandler = ({ name, attribute }) => {
+    this.props.onChangeSelectAttribute(name, attribute);
+  };
+
   render() {
-    const { attributes } = this.props;
+    const { attributes, selectedAttributes } = this.props;
 
     return (
       <div className="mt-2">
@@ -20,15 +24,41 @@ class ProductDescriptionAttributes extends Component {
               {attr.items.map((attribute) => {
                 return (
                   (attr.type === "text" && (
-                    <div key={attribute.value}>
+                    <div
+                      key={attribute.value}
+                      className={styles.textAttribute}
+                      data-attribute={
+                        selectedAttributes &&
+                        attribute.value === selectedAttributes[attr.name]
+                      }
+                    >
                       {" "}
-                      <TextAttributes value={attribute.value} />
+                      <TextAttributes
+                        value={attribute.value}
+                        onClick={this.changeSelectedAttributeHandler.bind(
+                          null,
+                          { name: attr.name, attribute }
+                        )}
+                      />
                     </div>
                   )) ||
                   (attr.type === "swatch" && (
-                    <div key={attribute.value}>
+                    <div
+                      key={attribute.value}
+                      className={styles.swatchAttribute}
+                      data-attribute={
+                        selectedAttributes &&
+                        attribute.value === selectedAttributes[attr.name]
+                      }
+                    >
                       {" "}
-                      <SwatchAttributes value={attribute.value} />
+                      <SwatchAttributes
+                        value={attribute.value}
+                        onClick={this.changeSelectedAttributeHandler.bind(
+                          null,
+                          { name: attr.name, attribute }
+                        )}
+                      />
                     </div>
                   ))
                 );

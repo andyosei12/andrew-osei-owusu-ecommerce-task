@@ -6,7 +6,7 @@ class SwatchAttributes extends Component {
     super();
   }
   render() {
-    const { value, height, width } = this.props;
+    const { value, height, width, ...otherProps } = this.props;
 
     return (
       <>
@@ -18,6 +18,7 @@ class SwatchAttributes extends Component {
             height: `${height}`,
             width: `${width}`,
           }}
+          {...otherProps}
         />
       </>
     );

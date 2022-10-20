@@ -7,15 +7,45 @@ import parse from "html-react-parser";
 import styles from "../styles/ProductDetails.module.css";
 import PrimaryButton from "./PrimaryButton";
 import ProductDescriptionAttributes from "./ProductDescriptionAttributes";
+import { addToCart } from "../store/cart-slice";
 
 class ProductDescription extends Component {
   constructor() {
     super();
+    this.state = {
+      selectedAttributes: null,
+    };
   }
 
+  selectAttributeChangeHandler = (name, attribute) => {
+    this.setState((state) => {
+      return {
+        selectedAttributes: {
+          ...state.selectedAttributes,
+          [name]: attribute.value,
+        },
+      };
+    });
+  };
+
+  addProductToCartHandler = () => {
+    const { productInfo, addItemToCart } = this.props;
+    const item = {
+      productInfo,
+      selectedAttributes: this.state.selectedAttributes,
+    };
+    addItemToCart(item);
+    this.setState({
+      selectedAttributes: null,
+    });
+  };
+
   render() {
-    const { name, brand, attributes, price, description, currency } =
-      this.props;
+    const {
+      productInfo: { name, brand, attributes, description },
+      price,
+      currency,
+    } = this.props;
 
     return (
       <section style={{ width: "35%" }}>
@@ -26,7 +56,11 @@ class ProductDescription extends Component {
           </hgroup>
           {/* Attributes */}
           <div className="mt-2">
-            <ProductDescriptionAttributes attributes={attributes} />
+            <ProductDescriptionAttributes
+              attributes={attributes}
+              onChangeSelectAttribute={this.selectAttributeChangeHandler}
+              selectedAttributes={this.state.selectedAttributes}
+            />
           </div>
           <div className="mt-2">
             <h1 className={styles["price__heading"]}>Price:</h1>
@@ -34,7 +68,9 @@ class ProductDescription extends Component {
               className={styles["price--amount"]}
             >{`${currency}${price[0].amount}`}</h1>
           </div>
-          <PrimaryButton>Add to Cart</PrimaryButton>
+          <PrimaryButton onClick={this.addProductToCartHandler}>
+            Add to Cart
+          </PrimaryButton>
           <div className={styles["product--description"]}>
             {parse(description)}
           </div>
@@ -48,4 +84,10 @@ const mapStateToProps = createStructuredSelector({
   currency: selectCurrencySymbol,
 });
 
-export default connect(mapStateToProps)(ProductDescription);
+export const mapDispatchToProps = (dispatch) => ({
+  addItemToCart(item) {
+    dispatch(addToCart(item));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDescription);
