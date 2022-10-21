@@ -28,12 +28,18 @@ class ProductDescription extends Component {
     });
   };
 
+  addSelectedAttributesValue = () => {
+    return Object.values(this.state.selectedAttributes).join("");
+  };
+
   addProductToCartHandler = () => {
     const { productInfo, addItemToCart } = this.props;
     const item = {
       productInfo,
       selectedAttributes: this.state.selectedAttributes,
+      cartProductId: productInfo.id + this.addSelectedAttributesValue(),
     };
+
     addItemToCart(item);
     this.setState({
       selectedAttributes: null,

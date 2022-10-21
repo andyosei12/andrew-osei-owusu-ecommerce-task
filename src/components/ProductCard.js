@@ -23,6 +23,7 @@ class ProductCard extends Component {
     const item = {
       productInfo: product,
       selectedAttributes,
+      cartProductId: product.id + Object.values(selectedAttributes).join(""),
     };
 
     addItemToCart(item);
