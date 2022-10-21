@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { addToCart } from "../store/cart-slice";
+import { addToCart, removeFromCart } from "../store/cart-slice";
 import { selectCurrencySymbol } from "../store/selctors";
 import styles from "../styles/CartItem.module.css";
 import CartProductAttributes from "./CartProductAttributes";
@@ -20,6 +20,14 @@ class CartItem extends Component {
       cartProductId,
     };
     addProductToCart(item);
+  };
+
+  removeProductFromCart = () => {
+    const {
+      removeProductFromCart,
+      cartItem: { cartProductId },
+    } = this.props;
+    removeProductFromCart(cartProductId);
   };
 
   render() {
@@ -50,7 +58,7 @@ class CartItem extends Component {
         <div className={styles.cartItemQty}>
           <button onClick={this.addProductToCart}>+</button>
           <h3>{quantity}</h3>
-          <button>-</button>
+          <button onClick={this.removeProductFromCart}>-</button>
         </div>
         <div className={styles.cartItemImg}>
           <img src={productInfo.gallery[0]} alt={productInfo.name} />
@@ -67,6 +75,9 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   addProductToCart(item) {
     dispatch(addToCart(item));
+  },
+  removeProductFromCart(id) {
+    dispatch(removeFromCart(id));
   },
 });
 

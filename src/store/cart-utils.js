@@ -14,3 +14,21 @@ export const addItemToCart = (cartItems, productToAdd) => {
     );
   }
 };
+
+export const removeItemFromCart = (cartItems, cartProductId) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.cartProductId === cartProductId
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(
+      (cartItem) => cartItem.cartProductId !== cartProductId
+    );
+  }
+
+  return cartItems.map((cartItem) =>
+    cartItem.cartProductId === cartProductId
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
