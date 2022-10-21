@@ -23,7 +23,7 @@ class MiniCart extends Component {
             <h3>My Bag: 3 Items</h3>
             <div>
               {cartItems.map((cartItem) => (
-                <CartItem key={cartItem.productInfo.id} cartItem={cartItem} />
+                <CartItem key={cartItem.cartProductId} cartItem={cartItem} />
               ))}
             </div>
           </div>
