@@ -1,8 +1,8 @@
 import { Component } from "react";
 
-import styles from "../styles/PrimaryButton.module.css";
+import styles from "../styles/SecondaryButton.module.css";
 
-class PrimaryButton extends Component {
+class SecondaryButton extends Component {
   constructor() {
     super();
   }
@@ -21,4 +21,4 @@ class PrimaryButton extends Component {
   }
 }
 
-export default PrimaryButton;
+export default SecondaryButton;

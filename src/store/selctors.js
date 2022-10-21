@@ -20,3 +20,22 @@ export const selectCartItems = createSelector(
   [selectCart],
   (cart) => cart.cartItems
 );
+
+export const selectCartTotal = createSelector(
+  [selectCurrencySymbol, selectCartItems],
+  (currency, cartItems) =>
+    cartItems.reduce((acc, cartItem) => {
+      return (
+        acc +
+        cartItem.quantity *
+          cartItem.productInfo.prices.find(
+            (price) => price.currency.symbol === currency
+          ).amount
+      );
+    }, 0)
+);
+
+export const selectCartItemsCount = createSelector(
+  [selectCartItems],
+  (cartItems) => cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0)
+);

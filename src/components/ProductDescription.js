@@ -74,7 +74,11 @@ class ProductDescription extends Component {
               className={styles["price--amount"]}
             >{`${currency}${price[0].amount}`}</h1>
           </div>
-          <PrimaryButton onClick={this.addProductToCartHandler}>
+          <PrimaryButton
+            py="1rem"
+            px="8rem"
+            onClick={this.addProductToCartHandler}
+          >
             Add to Cart
           </PrimaryButton>
           <div className={styles["product--description"]}>

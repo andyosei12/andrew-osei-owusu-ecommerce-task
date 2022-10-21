@@ -23,3 +23,19 @@
   height: 40rem;
   overflow-y: scroll;
 }
+
+.cartTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  font-size: 1.3rem;
+}
+
+.cartTotal h3:not(:last-child) {
+  font-family: var(--font-secondary);
+}
+
+.cartActions {
+  display: flex;
+  justify-content: space-between;
+}

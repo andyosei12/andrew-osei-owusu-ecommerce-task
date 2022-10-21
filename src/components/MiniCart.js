@@ -3,10 +3,17 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCartItems } from "../store/selctors";
+import {
+  selectCartItems,
+  selectCartItemsCount,
+  selectCartTotal,
+  selectCurrencySymbol,
+} from "../store/selctors";
 import { toggleMiniCartOpen } from "../store/ui-slice";
 import styles from "../styles/MiniCart.module.css";
 import CartItem from "./CartItem";
+import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 
 class MiniCart extends Component {
   constructor() {
@@ -14,22 +21,37 @@ class MiniCart extends Component {
   }
 
   render() {
-    const { cartItems, toggleCartOpen } = this.props;
+    const {
+      cartItems,
+      toggleCartOpen,
+      cartTotal,
+      currency,
+      cartItemsQuantity,
+    } = this.props;
+
     return (
       <>
         <div className={styles.cartOverlay} onClick={toggleCartOpen} />
         <div className={styles.miniCartContainer}>
           <div className={styles.cartItemContainer}>
-            <h3>My Bag: 3 Items</h3>
+            <h3>My Bag: {cartItemsQuantity} Items</h3>
             <div>
               {cartItems.map((cartItem) => (
                 <CartItem key={cartItem.cartProductId} cartItem={cartItem} />
               ))}
             </div>
           </div>
-          <div>
+          <div className={styles.cartTotal}>
             <h3>Total</h3>
-            <h3>Amount</h3>
+            <h3>{`${currency}${cartTotal.toFixed(2)}`}</h3>
+          </div>
+          <div className={styles.cartActions}>
+            <SecondaryButton py="1rem" px="3.3rem" fontSize="1.1rem">
+              View Bag
+            </SecondaryButton>
+            <PrimaryButton py="1rem" px="3.3rem" fontSize="1.1rem">
+              Checkout
+            </PrimaryButton>
           </div>
         </div>
       </>
@@ -39,6 +61,9 @@ class MiniCart extends Component {
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
+  cartTotal: selectCartTotal,
+  currency: selectCurrencySymbol,
+  cartItemsQuantity: selectCartItemsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
