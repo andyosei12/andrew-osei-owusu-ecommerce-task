@@ -48,6 +48,10 @@ a {
   align-items: center;
 }
 
+.gap-1 {
+  gap: 1rem;
+}
+
 /* margins */
 .mt-1 {
   margin-top: 1rem;
@@ -55,6 +59,10 @@ a {
 
 .mt-2 {
   margin-top: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
 }
 
 .mr-1 {
@@ -65,7 +73,16 @@ a {
   margin-right: 2rem;
 }
 
+/* widths */
+.w-3 {
+  width: 6.5rem;
+}
+
 /* font size */
+.text-xs {
+  font-size: 1.3rem;
+}
+
 .text-sm {
   font-size: 1.5rem;
 }
@@ -79,8 +96,14 @@ a {
 .text-300 {
   font-weight: 300;
 }
+.text-400 {
+  font-weight: 400;
+}
 .text-500 {
   font-weight: 500;
+}
+.text-600 {
+  font-weight: 600;
 }
 
 .text-capitalize {

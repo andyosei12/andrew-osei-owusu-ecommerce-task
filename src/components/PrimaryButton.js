@@ -8,13 +8,9 @@ class PrimaryButton extends Component {
   }
 
   render() {
-    const { children, py, px, fontSize, ...otherProps } = this.props;
+    const { children, ...otherProps } = this.props;
     return (
-      <button
-        className={styles.button}
-        style={{ padding: `${py} ${px}`, fontSize }}
-        {...otherProps}
-      >
+      <button className={styles.button} {...otherProps}>
         {children}
       </button>
     );
