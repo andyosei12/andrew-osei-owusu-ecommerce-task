@@ -34,6 +34,7 @@ class CartItem extends Component {
     const {
       cartItem: { productInfo, selectedAttributes, quantity },
       currency,
+      large,
     } = this.props;
 
     const price = productInfo.prices.filter(
@@ -43,11 +44,23 @@ class CartItem extends Component {
     return (
       <div className={styles.cartItemContainer}>
         <div className={styles.cartItemInfo}>
-          <h3 className="text-300 text-sm">{productInfo.brand}</h3>
-          <h3 className="text-300 text-sm">{productInfo.name}</h3>
-          <h3 className="text-500 text-sm mt-1">{`${currency}${(
-            price[0].amount * quantity
-          ).toFixed(2)}`}</h3>
+          <h3
+            className={`${large ? "text-600" : "text-300"} ${
+              large ? "text-md" : "text-sm"
+            } mb-1`}
+          >
+            {productInfo.brand}
+          </h3>
+          <h3
+            className={`${large ? "text-400" : "text-300"} ${
+              large ? "text-md" : "text-sm"
+            }`}
+          >
+            {productInfo.name}
+          </h3>
+          <h3
+            className={`${large ? "text-700" : "text-500"} text-sm mt-1`}
+          >{`${currency}${(price[0].amount * quantity).toFixed(2)}`}</h3>
           <div>
             <CartProductAttributes
               attributes={productInfo.attributes}
@@ -60,7 +73,10 @@ class CartItem extends Component {
           <h3>{quantity}</h3>
           <button onClick={this.removeProductFromCart}>-</button>
         </div>
-        <div className={styles.cartItemImg}>
+        <div
+          className={styles.cartItemImg}
+          style={{ width: `${large ? "20rem" : ""}` }}
+        >
           <img src={productInfo.gallery[0]} alt={productInfo.name} />
         </div>
       </div>

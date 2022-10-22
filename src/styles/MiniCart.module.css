@@ -14,7 +14,7 @@
   top: 5rem;
   right: 5rem;
   background: var(--color-white);
-  width: 28rem;
+  width: 30rem;
   padding: 1.5rem 1rem;
   z-index: 10000;
 }
@@ -38,4 +38,26 @@
 .cartActions {
   display: flex;
   justify-content: space-between;
+  margin: 3rem 0;
+}
+
+.cartBtn {
+  background: transparent;
+  text-transform: uppercase;
+  border: 1px solid var(--color-dark-1);
+  color: var(--color-dark-1);
+  font-size: 1.1rem;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  padding: 1rem 3.3rem;
+}
+
+.checkoutBtn {
+  background: var(--color-primary);
+  text-transform: uppercase;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.1rem;
+  padding: 1rem 3.3rem;
+  font-family: var(--font-primary);
 }

@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import {
   selectCartItems,
@@ -12,8 +13,6 @@ import {
 import { toggleMiniCartOpen } from "../store/ui-slice";
 import styles from "../styles/MiniCart.module.css";
 import CartItem from "./CartItem";
-import PrimaryButton from "./PrimaryButton";
-import SecondaryButton from "./SecondaryButton";
 
 class MiniCart extends Component {
   constructor() {
@@ -46,12 +45,16 @@ class MiniCart extends Component {
             <h3>{`${currency}${cartTotal.toFixed(2)}`}</h3>
           </div>
           <div className={styles.cartActions}>
-            <SecondaryButton py="1rem" px="3.3rem" fontSize="1.1rem">
+            <Link
+              to="/cart"
+              className={styles.cartBtn}
+              onClick={() => toggleCartOpen()}
+            >
               View Bag
-            </SecondaryButton>
-            <PrimaryButton py="1rem" px="3.3rem" fontSize="1.1rem">
+            </Link>
+            <Link to="/checkout" className={styles.checkoutBtn}>
               Checkout
-            </PrimaryButton>
+            </Link>
           </div>
         </div>
       </>
