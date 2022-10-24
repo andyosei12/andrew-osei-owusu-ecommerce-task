@@ -5,6 +5,7 @@ import { addToCart, removeFromCart } from "../store/cart-slice";
 import { selectCurrencySymbol } from "../store/selctors";
 import styles from "../styles/CartItem.module.css";
 import CartProductAttributes from "./CartProductAttributes";
+import ImageSlider from "./ImageSlider";
 
 class CartItem extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class CartItem extends Component {
     const {
       cartItem: { productInfo, selectedAttributes, quantity },
       currency,
-      large,
+      ...otherProps
     } = this.props;
 
     const price = productInfo.prices.filter(
@@ -45,21 +46,23 @@ class CartItem extends Component {
       <div className={styles.cartItemContainer}>
         <div className={styles.cartItemInfo}>
           <h3
-            className={`${large ? "text-600" : "text-300"} ${
-              large ? "text-md" : "text-sm"
+            className={`${otherProps.large ? "text-600" : "text-300"} ${
+              otherProps.large ? "text-md" : "text-sm"
             } mb-1`}
           >
             {productInfo.brand}
           </h3>
           <h3
-            className={`${large ? "text-400" : "text-300"} ${
-              large ? "text-md" : "text-sm"
+            className={`${otherProps.large ? "text-400" : "text-300"} ${
+              otherProps.large ? "text-md" : "text-sm"
             }`}
           >
             {productInfo.name}
           </h3>
           <h3
-            className={`${large ? "text-700" : "text-500"} text-sm mt-1`}
+            className={`${
+              otherProps.large ? "text-700" : "text-500"
+            } text-sm mt-1`}
           >{`${currency}${(price[0].amount * quantity).toFixed(2)}`}</h3>
           <div>
             <CartProductAttributes
@@ -73,12 +76,7 @@ class CartItem extends Component {
           <h3>{quantity}</h3>
           <button onClick={this.removeProductFromCart}>-</button>
         </div>
-        <div
-          className={styles.cartItemImg}
-          style={{ width: `${large ? "20rem" : ""}` }}
-        >
-          <img src={productInfo.gallery[0]} alt={productInfo.name} />
-        </div>
+        <ImageSlider gallery={productInfo.gallery} {...otherProps} />
       </div>
     );
   }
