@@ -13,7 +13,11 @@ export const selectCurrencySymbol = createSelector(
 );
 
 //ui selectors
-export const selectCartOpen = createSelector([selectUi], (ui) => ui.cartOpen);
+export const selectCartOpen = createSelector([selectUi], (ui) => ui.isCartOpen);
+export const selectCurrencyDropdownOpen = createSelector(
+  [selectUi],
+  (ui) => ui.isCurrencySwitchDropdownOpen
+);
 
 //cart selectors
 export const selectCartItems = createSelector(
