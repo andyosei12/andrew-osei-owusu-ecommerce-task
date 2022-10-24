@@ -4,6 +4,7 @@ import { changeCurrencyFormat } from "../store/currency-slice";
 import client from "../client";
 import styles from "../styles/CurrencySwitcher.module.css";
 import { GET_CURRENCIES } from "../routes/Navigation";
+import { toggleCurrencySwitchDropdown } from "../store/ui-slice";
 
 class CurrencySwitchDropdown extends Component {
   constructor() {
@@ -23,8 +24,9 @@ class CurrencySwitchDropdown extends Component {
   }
 
   changeCurrencyFormat = (currency) => {
-    const { changeCurrency } = this.props;
+    const { changeCurrency, toggleCurrencySwitchDropdown } = this.props;
     changeCurrency(currency);
+    toggleCurrencySwitchDropdown();
   };
 
   render() {
@@ -54,6 +56,9 @@ class CurrencySwitchDropdown extends Component {
 const mapDispatchToProps = (dispatch) => ({
   changeCurrency(currency) {
     dispatch(changeCurrencyFormat(currency));
+  },
+  toggleCurrencySwitchDropdown() {
+    dispatch(toggleCurrencySwitchDropdown());
   },
 });
 

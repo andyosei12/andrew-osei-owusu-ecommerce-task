@@ -1,30 +1,29 @@
 import { Component } from "react";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
-import { selectCurrencySymbol } from "../store/selctors";
+import {
+  selectCurrencyDropdownOpen,
+  selectCurrencySymbol,
+} from "../store/selctors";
 import { ReactComponent as ArrowDownIcon } from "../assets/arrowdown.svg";
 import { ReactComponent as ArrowUpIcon } from "../assets/ArrowUp.svg";
 
 import styles from "../styles/CurrencySwitcher.module.css";
 import CurrencySwitchDropdown from "./CurrencySwitchDropdown";
+import { toggleCurrencySwitchDropdown } from "../store/ui-slice";
 
 class CurrencySwitcher extends Component {
   constructor() {
     super();
-    this.state = {
-      currencyDropdown: false,
-    };
   }
 
   changeCurrencyHandler = () => {
-    this.setState((state) => ({
-      currencyDropdown: !state.currencyDropdown,
-    }));
+    const { toggleCurrencySwitchDropdown } = this.props;
+    toggleCurrencySwitchDropdown();
   };
 
   render() {
-    const { currencyDropdown } = this.state;
-    const { currencySymbol } = this.props;
+    const { currencySymbol, currencyDropdownOpen } = this.props;
     return (
       <div className={styles.container}>
         <button
@@ -32,9 +31,9 @@ class CurrencySwitcher extends Component {
           onClick={this.changeCurrencyHandler}
         >
           <h2>{currencySymbol}</h2>
-          {!currencyDropdown ? <ArrowDownIcon /> : <ArrowUpIcon />}
+          {!currencyDropdownOpen ? <ArrowDownIcon /> : <ArrowUpIcon />}
         </button>
-        {currencyDropdown && <CurrencySwitchDropdown />}
+        {currencyDropdownOpen && <CurrencySwitchDropdown />}
       </div>
     );
   }
@@ -42,6 +41,13 @@ class CurrencySwitcher extends Component {
 
 const mapStateToProps = createStructuredSelector({
   currencySymbol: selectCurrencySymbol,
+  currencyDropdownOpen: selectCurrencyDropdownOpen,
 });
 
-export default connect(mapStateToProps)(CurrencySwitcher);
+const mapDispatchToProps = (dispatch) => ({
+  toggleCurrencySwitchDropdown() {
+    dispatch(toggleCurrencySwitchDropdown());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencySwitcher);

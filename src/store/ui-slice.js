@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialUiState = {
-  cartOpen: false,
+  isCartOpen: false,
+  isCurrencySwitchDropdownOpen: false,
 };
 
 const uiSlice = createSlice({
@@ -9,10 +10,14 @@ const uiSlice = createSlice({
   initialState: initialUiState,
   reducers: {
     toggleMiniCartOpen(state) {
-      state.cartOpen = !state.cartOpen;
+      state.isCartOpen = !state.isCartOpen;
+    },
+    toggleCurrencySwitchDropdown(state) {
+      state.isCurrencySwitchDropdownOpen = !state.isCurrencySwitchDropdownOpen;
     },
   },
 });
 
-export const { toggleMiniCartOpen } = uiSlice.actions;
+export const { toggleMiniCartOpen, toggleCurrencySwitchDropdown } =
+  uiSlice.actions;
 export default uiSlice.reducer;
