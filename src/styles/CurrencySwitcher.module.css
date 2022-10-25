@@ -38,7 +38,8 @@
   padding: 1rem;
 }
 
-.currency-dropdown__list:hover {
+.currency-dropdown__list:hover,
+.currency-dropdown__list[data-active--currency="true"] {
   background: var(--color-gray);
 }
 
