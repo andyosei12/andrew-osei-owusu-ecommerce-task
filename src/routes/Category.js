@@ -4,6 +4,7 @@ import { Query } from "@apollo/client/react/components";
 import ProductCard from "../components/ProductCard";
 import withRouter from "../wrappers/WithRouter";
 import styles from "../styles/Category.module.css";
+import Spinner from "../components/Spinner";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query GetProducts($input: CategoryInput) {
@@ -54,6 +55,9 @@ class Category extends Component {
             variables={{ input: { title: params.categoryName } }}
           >
             {({ data }) => {
+              if (!data) {
+                return <Spinner />;
+              }
               return data?.category.products.map((product) => (
                 <div key={product.id}>
                   <ProductCard
