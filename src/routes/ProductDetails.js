@@ -18,6 +18,7 @@ export const GET_PRODUCT_DETAILS = gql`
       gallery
       brand
       description
+      inStock
       attributes {
         items {
           displayValue
