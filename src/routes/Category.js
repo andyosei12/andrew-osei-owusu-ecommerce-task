@@ -56,7 +56,10 @@ class Category extends Component {
             {({ data }) => {
               return data?.category.products.map((product) => (
                 <div key={product.id}>
-                  <ProductCard product={product} />
+                  <ProductCard
+                    product={product}
+                    categoryName={params.categoryName}
+                  />
                 </div>
               ));
             }}

@@ -30,7 +30,7 @@ class ProductCard extends Component {
   };
 
   render() {
-    const { product, currencySymbol } = this.props;
+    const { product, currencySymbol, categoryName } = this.props;
     const price = product.prices.filter(
       (price) => price.currency.symbol === currencySymbol
     );
@@ -53,7 +53,7 @@ class ProductCard extends Component {
             <CartIcon />
           </button>
         </div>
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/${categoryName}/${product.id}`}>
           <div className="mt-2">
             <h1 className={styles["product--name"]}>{product.name}</h1>
             <h1>{`${currencySymbol + amount}`}</h1>

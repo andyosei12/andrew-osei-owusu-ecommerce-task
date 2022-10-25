@@ -25,7 +25,7 @@ class CategoryMenu extends Component {
               return data?.categories.map((category) => (
                 <li key={category.name}>
                   <NavLink
-                    to={`/category/${category.name}`}
+                    to={`/${category.name}`}
                     style={({ isActive }) => {
                       return {
                         textDecoration: "none",
