@@ -16,15 +16,11 @@ class App extends Component {
       <div className="wrapper">
         <Routes>
           <Route path="/" element={<Navigation />}>
-            <Route
-              index
-              path="/category/:categoryName"
-              element={<Category />}
-            />
+            <Route path="/:categoryName" element={<Category />} />
 
             {/* Redirecting the home page to a category page */}
-            <Route path="/" element={<Navigate to="/category/all" replace />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/" element={<Navigate to="/all" replace />} />
+            <Route path="/:categoryName/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<ProductDetails />} />
           </Route>
