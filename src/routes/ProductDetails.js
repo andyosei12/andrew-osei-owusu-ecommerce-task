@@ -9,6 +9,7 @@ import ProductDescription from "../components/ProductDescription";
 import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
 import { connect } from "react-redux";
+import Spinner from "../components/Spinner";
 
 export const GET_PRODUCT_DETAILS = gql`
   query GetProductDetailById($productId: String!) {
@@ -51,6 +52,9 @@ class ProductDetails extends Component {
       <section className={styles["product-details"]}>
         <Query query={GET_PRODUCT_DETAILS} variables={{ productId: params.id }}>
           {({ data }) => {
+            if (!data) {
+              return <Spinner />;
+            }
             if (data) {
               const {
                 product: { gallery, name, prices },
