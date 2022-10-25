@@ -48,7 +48,7 @@ class ProductDescription extends Component {
 
   render() {
     const {
-      productInfo: { name, brand, attributes, description },
+      productInfo: { name, brand, attributes, description, inStock },
       price,
       currency,
     } = this.props;
@@ -74,13 +74,16 @@ class ProductDescription extends Component {
               className={styles["price--amount"]}
             >{`${currency}${price[0].amount}`}</h1>
           </div>
-          <PrimaryButton
-            py="1rem"
-            px="8rem"
-            onClick={this.addProductToCartHandler}
-          >
-            Add to Cart
-          </PrimaryButton>
+          {inStock && (
+            <PrimaryButton
+              py="1rem"
+              px="8rem"
+              onClick={this.addProductToCartHandler}
+            >
+              Add to Cart
+            </PrimaryButton>
+          )}
+
           <div className={styles["product--description"]}>
             {parse(description)}
           </div>
