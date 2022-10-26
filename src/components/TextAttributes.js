@@ -10,7 +10,7 @@ class TextAttributes extends Component {
     const { value, ...otherProps } = this.props;
 
     return (
-      <button className={styles["text--attribute"]} {...otherProps}>
+      <button className={styles.textAttribute} {...otherProps}>
         {value}
       </button>
     );

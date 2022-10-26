@@ -1,10 +1,10 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import CartProductAttributes from "./CartProductAttributes";
+import ImageSlider from "./ImageSlider";
 import { addToCart, removeFromCart } from "../store/cart-slice";
 import { selectCurrencySymbol } from "../store/selctors";
 import styles from "../styles/CartItem.module.css";
-import CartProductAttributes from "./CartProductAttributes";
-import ImageSlider from "./ImageSlider";
 
 class CartItem extends Component {
   constructor() {

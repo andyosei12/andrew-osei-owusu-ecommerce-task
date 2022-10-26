@@ -18,3 +18,10 @@
   margin-top: 1rem;
   padding: 1.5rem 0;
 }
+
+.cartSummaryContainer {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}

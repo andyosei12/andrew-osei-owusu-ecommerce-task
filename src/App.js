@@ -13,19 +13,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <Routes>
-          <Route path="/" element={<Navigation />}>
-            <Route path="/:categoryName" element={<Category />} />
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route path="/:categoryName" element={<Category />} />
 
-            {/* Redirecting the home page to a category page */}
-            <Route path="/" element={<Navigate to="/all" replace />} />
-            <Route path="/:categoryName/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<ProductDetails />} />
-          </Route>
-        </Routes>
-      </div>
+          {/* Redirecting the home page to a category page */}
+          <Route path="/" element={<Navigate to="/all" replace />} />
+          <Route path="/:categoryName/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<ProductDetails />} />
+        </Route>
+      </Routes>
     );
   }
 }

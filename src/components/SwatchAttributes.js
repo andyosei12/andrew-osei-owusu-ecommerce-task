@@ -12,7 +12,7 @@ class SwatchAttributes extends Component {
       <>
         <button
           key={value}
-          className={styles["swatch--attribute"]}
+          className={styles.swatchAttribute}
           style={{
             background: `${value}`,
             height: `${height}`,

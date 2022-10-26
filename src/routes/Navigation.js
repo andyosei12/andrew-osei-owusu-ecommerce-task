@@ -1,13 +1,14 @@
 import { Component } from "react";
-import CategoryMenu from "../components/CategoryMenu";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import { ReactComponent as AppIcon } from "../assets/a-logo.svg";
-import styles from "../styles/Navigation.module.css";
-import CurrencySwitcher from "../components/CurrencySwitcher";
-import CartIcon from "../components/CartIcon";
 import { Outlet } from "react-router-dom";
 
+import CategoryMenu from "../components/CategoryMenu";
+import CurrencySwitcher from "../components/CurrencySwitcher";
+import CartIcon from "../components/CartIcon";
+
+import styles from "../styles/Navigation.module.css";
 export const GET_CURRENCIES = gql`
   query GetCurrencies {
     currencies {
@@ -23,8 +24,8 @@ class Navigation extends Component {
 
   render() {
     return (
-      <>
-        <header className={styles["nav-container"]}>
+      <div className="wrapper">
+        <header className={styles.navContainer}>
           <CategoryMenu />
           <AppIcon />
           <div className="flex align-center">
@@ -35,7 +36,7 @@ class Navigation extends Component {
         <main>
           <Outlet />
         </main>
-      </>
+      </div>
     );
   }
 }

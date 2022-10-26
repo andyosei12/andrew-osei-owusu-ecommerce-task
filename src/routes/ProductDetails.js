@@ -48,7 +48,7 @@ class ProductDetails extends Component {
       currency,
     } = this.props;
     return (
-      <section className={styles["product-details"]}>
+      <section className={styles.productDetails}>
         <Query query={GET_PRODUCT_DETAILS} variables={{ productId: params.id }}>
           {({ data, loading }) => {
             if (loading) {
