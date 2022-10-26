@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import CartItem from "../components/CartItem";
 import PrimaryButton from "../components/PrimaryButton";
 import {
@@ -33,11 +32,11 @@ class Cart extends Component {
             <h3 className="text-700">{`${currency}${tax.toFixed(2)}`}</h3>
           </div>
           <div className="flex gap-1 text-xs mb-1">
-            <h3 className="text-400 w-3">Quantity</h3>
+            <h3 className="text-400 w-3">Quantity:</h3>
             <h3 className="text-700">{cartItemsQty}</h3>
           </div>
           <div className="flex gap-1 text-xs mb-1">
-            <h3 className="text-600 w-3">Total</h3>
+            <h3 className="text-600 w-3">Total:</h3>
             <h3 className="text-700">{`${currency}${(cartTotal + tax).toFixed(
               2
             )}`}</h3>
@@ -49,11 +48,11 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  cartTotal: selectCartTotal,
-  cartItemsQty: selectCartItemsCount,
-  currency: selectCurrencySymbol,
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state),
+  cartTotal: selectCartTotal(state),
+  cartItemsQty: selectCartItemsCount(state),
+  currency: selectCurrencySymbol(state),
 });
 
 export default connect(mapStateToProps)(Cart);

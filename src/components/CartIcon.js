@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import { ReactComponent as EmptyCartIcon } from "../assets/carticon.svg";
 import {
   selectCartItems,
@@ -22,6 +21,7 @@ class CartIcon extends Component {
 
   render() {
     const { cartOpen, cartItemsQuantity, cartItems } = this.props;
+
     return (
       <>
         <button
@@ -45,10 +45,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const mapStateToProps = createStructuredSelector({
-  cartOpen: selectCartOpen,
-  cartItemsQuantity: selectCartItemsCount,
-  cartItems: selectCartItems,
+const mapStateToProps = (state) => ({
+  cartOpen: selectCartOpen(state),
+  cartItemsQuantity: selectCartItemsCount(state),
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

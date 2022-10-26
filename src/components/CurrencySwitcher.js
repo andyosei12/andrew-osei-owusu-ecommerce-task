@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import {
   selectCurrencyDropdownOpen,
@@ -39,9 +38,9 @@ class CurrencySwitcher extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  currencySymbol: selectCurrencySymbol,
-  currencyDropdownOpen: selectCurrencyDropdownOpen,
+const mapStateToProps = (state) => ({
+  currencySymbol: selectCurrencySymbol(state),
+  currencyDropdownOpen: selectCurrencyDropdownOpen(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

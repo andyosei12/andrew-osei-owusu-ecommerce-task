@@ -5,7 +5,6 @@ import client from "../client";
 import styles from "../styles/CurrencySwitcher.module.css";
 import { GET_CURRENCIES } from "../routes/Navigation";
 import { toggleCurrencySwitchDropdown } from "../store/ui-slice";
-import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
 
 class CurrencySwitchDropdown extends Component {
@@ -57,9 +56,10 @@ class CurrencySwitchDropdown extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  activeCurrency: selectCurrencySymbol,
+const mapStateToProps = (state) => ({
+  activeCurrency: selectCurrencySymbol(state),
 });
+
 const mapDispatchToProps = (dispatch) => ({
   changeCurrency(currency) {
     dispatch(changeCurrencyFormat(currency));

@@ -3,7 +3,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { createStructuredSelector } from "reselect";
 import {
   selectCartItems,
   selectCartItemsCount,
@@ -62,11 +61,11 @@ class MiniCart extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  cartTotal: selectCartTotal,
-  currency: selectCurrencySymbol,
-  cartItemsQuantity: selectCartItemsCount,
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state),
+  cartTotal: selectCartTotal(state),
+  currency: selectCurrencySymbol(state),
+  cartItemsQuantity: selectCartItemsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
