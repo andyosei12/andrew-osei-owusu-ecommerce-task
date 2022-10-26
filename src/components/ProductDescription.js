@@ -27,6 +27,7 @@ class ProductDescription extends Component {
     });
   };
 
+  // adding the selected product attributes values
   addSelectedAttributesValue = () => {
     return Object.values(this.state.selectedAttributes).join("");
   };

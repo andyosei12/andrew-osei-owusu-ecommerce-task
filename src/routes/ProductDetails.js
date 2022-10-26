@@ -50,8 +50,8 @@ class ProductDetails extends Component {
     return (
       <section className={styles["product-details"]}>
         <Query query={GET_PRODUCT_DETAILS} variables={{ productId: params.id }}>
-          {({ data }) => {
-            if (!data) {
+          {({ data, loading }) => {
+            if (loading) {
               return <Spinner />;
             }
             if (data) {

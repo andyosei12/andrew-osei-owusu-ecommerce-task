@@ -11,6 +11,7 @@ class CartItem extends Component {
     super();
   }
 
+  // adding a product to cart function
   addProductToCart = () => {
     const {
       addProductToCart,
@@ -22,6 +23,7 @@ class CartItem extends Component {
     addProductToCart(item);
   };
 
+  // removing a product from cart function
   removeProductFromCart = () => {
     const {
       removeProductFromCart,
