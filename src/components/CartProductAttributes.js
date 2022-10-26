@@ -13,30 +13,34 @@ class CartProductAttributes extends Component {
 
     return (
       <div className="mt-2">
-        {attributes.map((attr) => (
-          <div key={attr.name}>
-            <h1 className={styles.productAttributeName}>{attr.name}</h1>
+        {attributes.map((productAttribute) => (
+          <div key={productAttribute.name}>
+            <h1 className={styles.productAttributeName}>
+              {productAttribute.name}
+            </h1>
             <div className={styles.productAttributesContainer}>
-              {attr.items.map((attribute) => {
+              {productAttribute.items.map((attribute) => {
                 return (
-                  (attr.type === "text" && (
+                  (productAttribute.type === "text" && (
                     <div
                       key={attribute.value}
                       className={styles.textAttribute}
                       data-attribute={
-                        attribute.value === selectedAttributes[attr.name]
+                        attribute.value ===
+                        selectedAttributes[productAttribute.name]
                       }
                     >
                       {" "}
                       <TextAttributes value={attribute.value} />
                     </div>
                   )) ||
-                  (attr.type === "swatch" && (
+                  (productAttribute.type === "swatch" && (
                     <div
                       key={attribute.value}
                       className={styles.swatchAttribute}
                       data-attribute={
-                        attribute.value === selectedAttributes[attr.name]
+                        attribute.value ===
+                        selectedAttributes[productAttribute.name]
                       }
                     >
                       {" "}

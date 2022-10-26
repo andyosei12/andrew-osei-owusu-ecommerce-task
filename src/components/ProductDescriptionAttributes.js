@@ -17,19 +17,22 @@ class ProductDescriptionAttributes extends Component {
 
     return (
       <div className="mt-2">
-        {attributes.map((attr) => (
-          <div key={attr.name}>
-            <h1 className={styles.productAttributeName}>{attr.name}</h1>
+        {attributes.map((productAttribute) => (
+          <div key={productAttribute.name}>
+            <h1 className={styles.productAttributeName}>
+              {productAttribute.name}
+            </h1>
             <div className={styles.productAttributesContainer}>
-              {attr.items.map((attribute) => {
+              {productAttribute.items.map((attribute) => {
                 return (
-                  (attr.type === "text" && (
+                  (productAttribute.type === "text" && (
                     <div
                       key={attribute.value}
                       className={styles.textAttribute}
                       data-attribute={
                         selectedAttributes &&
-                        attribute.value === selectedAttributes[attr.name]
+                        attribute.value ===
+                          selectedAttributes[productAttribute.name]
                       }
                     >
                       {" "}
@@ -37,18 +40,19 @@ class ProductDescriptionAttributes extends Component {
                         value={attribute.value}
                         onClick={this.changeSelectedAttributeHandler.bind(
                           null,
-                          { name: attr.name, attribute }
+                          { name: productAttribute.name, attribute }
                         )}
                       />
                     </div>
                   )) ||
-                  (attr.type === "swatch" && (
+                  (productAttribute.type === "swatch" && (
                     <div
                       key={attribute.value}
                       className={styles.swatchAttribute}
                       data-attribute={
                         selectedAttributes &&
-                        attribute.value === selectedAttributes[attr.name]
+                        attribute.value ===
+                          selectedAttributes[productAttribute.name]
                       }
                     >
                       {" "}
@@ -56,7 +60,7 @@ class ProductDescriptionAttributes extends Component {
                         value={attribute.value}
                         onClick={this.changeSelectedAttributeHandler.bind(
                           null,
-                          { name: attr.name, attribute }
+                          { name: productAttribute.name, attribute }
                         )}
                       />
                     </div>

@@ -24,6 +24,9 @@ export const selectCartItems = createSelector(
   (cart) => cart.cartItems
 );
 
+const productPrice = (prices, currency) =>
+  prices.find((price) => price.currency.symbol === currency);
+
 export const selectCartTotal = createSelector(
   [selectCurrencySymbol, selectCartItems],
   (currency, cartItems) =>
@@ -31,9 +34,7 @@ export const selectCartTotal = createSelector(
       return (
         acc +
         cartItem.quantity *
-          cartItem.productInfo.prices.find(
-            (price) => price.currency.symbol === currency
-          ).amount
+          productPrice(cartItem.productInfo.prices, currency).amount
       );
     }, 0)
 );

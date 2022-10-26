@@ -54,8 +54,8 @@ class Category extends Component {
             query={GET_CATEGORY_PRODUCTS}
             variables={{ input: { title: params.categoryName } }}
           >
-            {({ data }) => {
-              if (!data) {
+            {({ data, loading }) => {
+              if (loading) {
                 return <Spinner />;
               }
               return data?.category.products.map((product) => (
