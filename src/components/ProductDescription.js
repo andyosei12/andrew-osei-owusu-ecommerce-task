@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { selectCurrencySymbol } from "../store/selctors";
 import parse from "html-react-parser";
 
-import styles from "../styles/ProductDetails.module.css";
-import PrimaryButton from "./PrimaryButton";
 import ProductDescriptionAttributes from "./ProductDescriptionAttributes";
+import PrimaryButton from "./PrimaryButton";
 import { addToCart } from "../store/cart-slice";
+import styles from "../styles/ProductDetails.module.css";
 
 class ProductDescription extends Component {
   constructor() {
@@ -55,10 +55,10 @@ class ProductDescription extends Component {
 
     return (
       <section style={{ width: "35%" }}>
-        <div className={styles["product-description"]}>
+        <div className={styles.productDescriptionContainer}>
           <hgroup>
-            <h1 className={styles["product--brand"]}>{brand}</h1>
-            <h1 className={styles["product--name"]}>{name}</h1>
+            <h1 className={styles.productBrand}>{brand}</h1>
+            <h1 className={styles.productName}>{name}</h1>
           </hgroup>
           {/* Attributes */}
           <div className="mt-2">
@@ -69,9 +69,9 @@ class ProductDescription extends Component {
             />
           </div>
           <div className="mt-2">
-            <h1 className={styles["price__heading"]}>Price:</h1>
+            <h1 className={styles.priceHeading}>Price:</h1>
             <h1
-              className={styles["price--amount"]}
+              className={styles.priceAmount}
             >{`${currency}${price[0].amount}`}</h1>
           </div>
           {inStock && (
@@ -84,9 +84,7 @@ class ProductDescription extends Component {
             </PrimaryButton>
           )}
 
-          <div className={styles["product--description"]}>
-            {parse(description)}
-          </div>
+          <div className={styles.productDescription}>{parse(description)}</div>
         </div>
       </section>
     );

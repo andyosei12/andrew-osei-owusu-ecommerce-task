@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { ReactComponent as EmptyCartIcon } from "../assets/carticon.svg";
+import MiniCart from "./MiniCart";
 import {
   selectCartItems,
   selectCartItemsCount,
   selectCartOpen,
 } from "../store/selctors";
 import { toggleMiniCartOpen } from "../store/ui-slice";
-import MiniCart from "./MiniCart";
 import styles from "../styles/CartIcon.module.css";
 class CartIcon extends Component {
   constructor() {

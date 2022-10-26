@@ -2,9 +2,9 @@ import { Component } from "react";
 import { gql } from "@apollo/client";
 import { Query } from "@apollo/client/react/components";
 import ProductCard from "../components/ProductCard";
+import Spinner from "../components/Spinner";
 import withRouter from "../wrappers/WithRouter";
 import styles from "../styles/Category.module.css";
-import Spinner from "../components/Spinner";
 
 const GET_CATEGORY_PRODUCTS = gql`
   query GetProducts($input: CategoryInput) {

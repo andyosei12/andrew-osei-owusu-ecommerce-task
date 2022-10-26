@@ -1,7 +1,7 @@
 import { Component } from "react";
-import styles from "../styles/CartProductAttribute.module.css";
 import SwatchAttributes from "./SwatchAttributes";
 import TextAttributes from "./TextAttributes";
+import styles from "../styles/CartProductAttribute.module.css";
 
 class CartProductAttributes extends Component {
   constructor() {

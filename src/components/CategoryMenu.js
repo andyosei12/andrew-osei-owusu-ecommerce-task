@@ -19,7 +19,7 @@ class CategoryMenu extends Component {
   render() {
     return (
       <nav>
-        <ul className={styles["nav-wrapper"]}>
+        <ul className={styles.navWrapper}>
           <Query query={GET_ALL_CATEGORIES}>
             {({ data }) => {
               return data?.categories.map((category) => (

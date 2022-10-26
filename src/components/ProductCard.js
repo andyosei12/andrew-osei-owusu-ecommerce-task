@@ -41,12 +41,12 @@ class ProductCard extends Component {
         data-product__active={product.inStock}
         style={{ opacity: `${!product.inStock ? 0.35 : 1}` }}
       >
-        <div className={styles["img-container"]}>
-          <div className={styles["img-container--box"]} />
+        <div className={styles.imgContainer}>
+          <div className={styles.imgContainerBox} />
           <img src={product.gallery[0]} alt={product.name} />
           {!product.inStock && <h3>Out of stock</h3>}
           <button
-            className={styles["product__cart-icon"]}
+            className={styles.productCartIcon}
             onClick={this.addProductToCartHandler}
           >
             <CartIcon />
@@ -54,7 +54,7 @@ class ProductCard extends Component {
         </div>
         <Link to={`/${categoryName}/${product.id}`}>
           <div className="mt-2">
-            <h1 className={styles["product--name"]}>{product.name}</h1>
+            <h1 className={styles.productName}>{product.name}</h1>
             <h1>{`${currencySymbol + amount}`}</h1>
           </div>
         </Link>

@@ -26,17 +26,17 @@ class ProductDetailImages extends Component {
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
             <div
               key={idx}
-              className={styles["product__images--small"]}
+              className={styles["productImagesSmall"]}
               onClick={this.changeImageHandler.bind(null, idx)}
             >
-              <div className={styles["img-container--box"]} />
+              <div className={styles["imgContainerBox"]} />
               <img src={image} alt={productName} />
             </div>
           ))}
         </div>
 
-        <div className={styles["product__images--large"]}>
-          <div className={styles["img-container--box"]} />
+        <div className={styles["productImagesLarge"]}>
+          <div className={styles["imgContainerBox"]} />
           <img src={images[imageIdx]} alt={productName} />
         </div>
       </>

@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { changeCurrencyFormat } from "../store/currency-slice";
 import client from "../client";
-import styles from "../styles/CurrencySwitcher.module.css";
 import { GET_CURRENCIES } from "../routes/Navigation";
+import { changeCurrencyFormat } from "../store/currency-slice";
 import { toggleCurrencySwitchDropdown } from "../store/ui-slice";
 import { selectCurrencySymbol } from "../store/selctors";
+import styles from "../styles/CurrencySwitcher.module.css";
 
 class CurrencySwitchDropdown extends Component {
   constructor() {
@@ -25,9 +25,9 @@ class CurrencySwitchDropdown extends Component {
   }
 
   changeCurrencyFormat = (currency) => {
-    const { changeCurrency, toggleCurrencySwitchDropdown } = this.props;
+    const { changeCurrency, toggleCurrencyDropdown } = this.props;
     changeCurrency(currency);
-    toggleCurrencySwitchDropdown();
+    toggleCurrencyDropdown();
   };
 
   render() {
@@ -35,12 +35,12 @@ class CurrencySwitchDropdown extends Component {
     const { activeCurrency } = this.props;
 
     return (
-      <div className={styles["currency-dropdown"]}>
+      <div className={styles.currencyDropdown}>
         <ul>
           {currencies?.map((currency) => (
             <li
               key={currency.symbol}
-              className={styles["currency-dropdown__list"]}
+              className={styles.currencyDropdownList}
               data-active--currency={currency.symbol === activeCurrency}
             >
               <button
@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeCurrency(currency) {
     dispatch(changeCurrencyFormat(currency));
   },
-  toggleCurrencySwitchDropdown() {
+  toggleCurrencyDropdown() {
     dispatch(toggleCurrencySwitchDropdown());
   },
 });
