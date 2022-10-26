@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
 import { ReactComponent as CartIcon } from "../assets/carticon.svg";
 import styles from "../styles/ProductCard.module.css";
@@ -64,11 +63,11 @@ class ProductCard extends Component {
   }
 }
 
-export const mapStateToProps = createStructuredSelector({
-  currencySymbol: selectCurrencySymbol,
+const mapStateToProps = (state) => ({
+  currencySymbol: selectCurrencySymbol(state),
 });
 
-export const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   addItemToCart(item) {
     dispatch(addToCart(item));
   },

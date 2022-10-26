@@ -6,7 +6,6 @@ import withRouter from "../wrappers/WithRouter";
 import styles from "../styles/ProductDetails.module.css";
 import ProductDetailImages from "../components/ProductDetailImages";
 import ProductDescription from "../components/ProductDescription";
-import { createStructuredSelector } from "reselect";
 import { selectCurrencySymbol } from "../store/selctors";
 import { connect } from "react-redux";
 import Spinner from "../components/Spinner";
@@ -79,8 +78,8 @@ class ProductDetails extends Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  currency: selectCurrencySymbol,
+const mapStateToProps = (state) => ({
+  currency: selectCurrencySymbol(state),
 });
 
 export default withRouter(connect(mapStateToProps)(ProductDetails));

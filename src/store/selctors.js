@@ -1,7 +1,6 @@
 import { createSelector } from "reselect";
 
 //input selectors
-
 const selectCurrency = (state) => state.currency;
 const selectUi = (state) => state.ui;
 const selectCart = (state) => state.cart;
